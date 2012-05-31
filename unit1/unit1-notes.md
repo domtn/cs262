@@ -17,7 +17,7 @@ re.findall(r"[0-9]+", "21something1and1776") = ['21', '1', '1776']
 
 FINITE STATE MACHINES
 
-    Suppose we want r"[0-9]+%" 30% 99% 2%
+    Suppose we want r"[0-9]+%" = ["30%", "99%", "2%"]
 
 
     THE QUESTION MARK - Optional (epsilon) operator
@@ -62,8 +62,7 @@ MORE REGULAR EXPRESSIONS
 
 
     THE DOT . any character (except new line)
-    re.findall(r"[0-9].[0-9]", "1a1 222 cc3") = 
-    ['1a1', '222']
+    re.findall(r"[0-9].[0-9]", "1a1 222 cc3") = ['1a1', '222']
     
     THE HAT (^ inside []) this means not or set complement 
     re.findall(r"[0-9][^ab]", "1a1 222 cc3") = ['1 ', '22', '2']
