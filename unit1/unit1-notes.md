@@ -19,11 +19,18 @@ FINITE STATE MACHINES
 
     Suppose we want r"[0-9]+%" = ["30%", "99%", "2%"]
 
+DISJUNCTION (OR)
 
-    THE QUESTION MARK - Optional (epsilon) operator
+    r = "[a-z]+|[0-9]+"
+    "|" is the OR operator
 
-    re.findall(r"-?[0-9]+", "1861-1941") = ["1861", "-1941"]
-     (the previous thing zero or one time)
+    re.findall("[a-z]+|[0-9]+", "Goethe 1749") = ['oethe', '1749']
+
+
+THE QUESTION MARK - Optional (epsilon) operator
+
+re.findall(r"-?[0-9]+", "1861-1941") = ["1861", "-1941"]
+ (the previous thing zero or one time)
 
 
 MORE REGULAR EXPRESSIONS
@@ -67,3 +74,27 @@ MORE REGULAR EXPRESSIONS
     THE HAT (^ inside []) this means not or set complement 
     re.findall(r"[0-9][^ab]", "1a1 222 cc3") = ['1 ', '22', '2']
      
+    GROUPING
+    (?: )
+
+
+STRUCTURE
+    Supposed we want to find words mae up of combinations of musical notes: do re mi.
+        re.findall(r"do+|re+|mi+", "mimi rere midore doo-wop") = ['mi', 'mi', 're', 're', 'mi', 'do', 're', 'doo']
+    This is because r"mi+" = mi, mii, miii
+
+        re.findall(r"(?:do|re|mi)+", "mimi rere midore doo-wop") = ['mimi', 'rere', 'midore', 'do']
+
+QUIZ Tricky REs with ^ and .
+    Assign t regexp a regular expression for double-quoted string literals that allows for escaped double quotes.
+    Yes: '"I say, \\"hello.\\""' = "I say, \"hello.\""
+    No:  '"\\"' = "\"
+
+    Hint: escape " and \. 
+    Hint: (:?(:?))
+
+
+
+
+
+
